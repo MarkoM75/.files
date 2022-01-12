@@ -51,4 +51,4 @@ fi
 wal -R
 
 picom &
-exec frankenwm
+exec dwm
