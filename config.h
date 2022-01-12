@@ -45,8 +45,7 @@
  * If desktop is negative, then current is assumed. Desktops are 0-indexed.
  * If border_width is negative, the default is assumed.
  *
- * The matching is done via POSIX-ERE-regexes on the class or instance strings
- * as reported by xprop(1):
+ * The matching is done via POSIX-ERE-regexes on the class or instance strings as reported by xprop(1):
  *
  *     WM_CLASS(STRING) = instance, class
  *
@@ -74,12 +73,12 @@ static const AppRule rules[] = { \
  * window. The title of the scratchpad window should also match SCRPDNAME from
  * above
  */
-static const char *termcmd[] = { "alacritty", NULL };
+static const char *termcmd[] = { "st", NULL };
 static const char *menucmd[] = { "dmenu_run", NULL };
 static const char *browsercmd[] = { "librewolf", NULL };
 static const char *discordcmd[] = { "discord", NULL };
-static const char *snipcmd[] = { "alacritty", "-e", "flameshot", "gui", NULL };
-static const char *scrpcmd[] = { "alacritty", "-T", "scratchpad", NULL };
+static const char *snipcmd[] = { "st", "-e", "flameshot", "gui", NULL };
+static const char *scrpcmd[] = { "st", "-T", "scratchpad", NULL };
 /* static const char *scrpcmd[] = { "urxvt", "-name", "scratchpad",  NULL }; */
 
 #define DESKTOPCHANGE(K,N) \
@@ -96,8 +95,8 @@ static key keys[] = {
     /* modifier          key            function           argument */
 
     /* select windows */
-    {  MOD4,             XK_Right,      next_win,          {NULL}},
-    {  MOD4,             XK_Left,       prev_win,          {NULL}},
+    {  MOD4,             XK_k,          next_win,          {NULL}},
+    {  MOD4,             XK_j,          prev_win,          {NULL}},
     /* select the master window, or the previously focussed slave */
     {  MOD4,             XK_w,          focusmaster,       {NULL}},
     /* select urgent window */
@@ -107,9 +106,9 @@ static key keys[] = {
     {  MOD4|SHIFT,       XK_j,          move_down,         {NULL}},
     {  MOD4|SHIFT,       XK_k,          move_up,           {NULL}},
     /* swap the current window to master */
-    {  MOD4,             XK_Return,     swap_master,       {NULL}},
+    {  MOD4,             XK_b,          swap_master,       {NULL}},
     /* maximize the current window */
-    {  MOD4,             XK_Up,         maximize,          {NULL}},
+    {  MOD4,             XK_h,          maximize,          {NULL}},
     /* minimize window to queue/pull window from queue */
     {  MOD4,             XK_m,          minimize,          {NULL}},
     {  MOD4,             XK_n,          restore,           {NULL}},
@@ -204,4 +203,3 @@ static Button buttons[] = {
     {  MOD4,    Button3,     mousemotion,   {.i = RESIZE}},
 };
 #endif
-
